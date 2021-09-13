@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "543099538870",
+    "project_id": "speed-button",
+    "storage_bucket": "speed-button.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543099538870:android:70e310bc2263b35fa04517",
+        "android_client_info": {
+          "package_name": "com.jeremybenson.speedbutton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543099538870-rh2q4saodt9sb0au1kleffep9uglnfg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAObeRA7o1VCBKaVQYhAg_rhzXPUFIpFzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543099538870-rh2q4saodt9sb0au1kleffep9uglnfg7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "543099538870-0k46pombjgbn86iklnec1n0umirtc0td.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jeremybenson.speedbutton"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
