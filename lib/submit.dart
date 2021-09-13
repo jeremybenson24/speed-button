@@ -25,13 +25,16 @@ class _SubmitState extends State<Submit> {
   });
 
   void submitScore() {
-    scoresRef.doc()
-        .collection('scores')
+    scoresRef
         .add({
       'score': score,
       'name': nameController.text,
     });
     nameController.clear();
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Home())
+    );
   }
 
   @override
@@ -40,7 +43,7 @@ class _SubmitState extends State<Submit> {
       onWillPop: () async => false,
       child: new Scaffold(
           appBar: AppBar(
-            title: Text('eat shit and die'),
+            title: Text('Submit Your Score'),
           ),
           body: Center(
               child: Column(
@@ -66,9 +69,15 @@ class _SubmitState extends State<Submit> {
                       ),
                     ),
                     ElevatedButton(
-                      child: Text('Cancel, Return to Main Menu'),
+                      child: Text('Cancel'),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Home())
+                        );
+                      }
                     )
-                  ]
+                  ],
               )
           )
       )

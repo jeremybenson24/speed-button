@@ -60,15 +60,10 @@ class _GameState extends State<Game> {
               style: Theme.of(context).textTheme.headline4,
             ),
             ElevatedButton(
-              onPressed: _startTimer,
+              onPressed: _isCounting ? _incrementCounter : _startTimer,
             )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _isCounting ? _incrementCounter : _startTimer,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }

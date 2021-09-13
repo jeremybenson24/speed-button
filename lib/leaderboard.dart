@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'home.dart';
 
 class Score extends StatelessWidget {
@@ -10,6 +11,13 @@ class Score extends StatelessWidget {
     this.name,
   });
 
+  factory Score.fromDocument(DocumentSnapshot doc) {
+    return Score(
+      score: doc['score'],
+      name: doc['name'],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,6 +25,7 @@ class Score extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Text('$score'),
+          Text('              '),
           Text(name),
         ],
       ),
@@ -33,14 +42,12 @@ class _LeaderboardState extends State<Leaderboard> {
   StreamBuilder buildLeaderboard() {
     return StreamBuilder(
       stream: scoresRef
-        .doc()
-        .collection('scores')
-        .orderBy('scores', descending: true)
+        .orderBy('score', descending: true)
         .snapshots(),
       builder: (context, snapshot) {
         var allScores = <Score>[];
-        snapshot.data.forEach((doc) {
-          allScores.add(new Score(score: doc['score'], name: doc['name']));
+        snapshot.data.docs.forEach((doc) {
+          allScores.add(Score.fromDocument(doc));
         });
         return ListView(
           children: allScores,
@@ -57,7 +64,7 @@ class _LeaderboardState extends State<Leaderboard> {
       ),
       body: Column(
         children: <Widget>[
-          buildLeaderboard(),
+          Expanded(child: buildLeaderboard()),
         ],
       )
     );
